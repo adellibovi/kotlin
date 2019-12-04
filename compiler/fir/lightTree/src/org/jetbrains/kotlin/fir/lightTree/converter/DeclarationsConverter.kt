@@ -607,7 +607,7 @@ class DeclarationsConverter(
         val defaultVisibility = classWrapper.defaultConstructorVisibility()
         val firDelegatedCall = FirDelegatedConstructorCallImpl(
             null,
-            classWrapper.delegatedSuperTypeRef,
+            classWrapper.delegatedSuperTypeRef.copyUserType(),
             isThis = false
         ).extractArgumentsFrom(classWrapper.superTypeCallEntry, stubMode)
 

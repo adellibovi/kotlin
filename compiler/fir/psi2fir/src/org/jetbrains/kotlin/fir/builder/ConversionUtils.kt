@@ -24,10 +24,8 @@ import org.jetbrains.kotlin.fir.symbols.CallableId
 import org.jetbrains.kotlin.fir.symbols.impl.FirPropertyAccessorSymbol
 import org.jetbrains.kotlin.fir.symbols.impl.FirPropertySymbol
 import org.jetbrains.kotlin.fir.symbols.impl.FirVariableSymbol
-import org.jetbrains.kotlin.fir.types.ConeStarProjection
-import org.jetbrains.kotlin.fir.types.FirTypeRef
-import org.jetbrains.kotlin.fir.types.impl.FirImplicitKPropertyTypeRef
-import org.jetbrains.kotlin.fir.types.impl.FirImplicitTypeRefImpl
+import org.jetbrains.kotlin.fir.types.*
+import org.jetbrains.kotlin.fir.types.impl.*
 import org.jetbrains.kotlin.ir.expressions.IrConstKind
 import org.jetbrains.kotlin.lexer.KtTokens
 import org.jetbrains.kotlin.name.Name
@@ -394,6 +392,26 @@ fun FirModifiableVariable<*>.generateAccessorsByDelegate(session: FirSession, me
             )
         }
     }
+}
+
+fun FirTypeRef.copyUserType(): FirTypeRef {
+    if (this !is FirUserTypeRef) return this
+    val original = this
+    return FirUserTypeRefImpl(original.source, original.isMarkedNullable).apply {
+        qualifier += original.qualifier.map { qualifierPart ->
+            FirQualifierPartImpl(qualifierPart.name).apply {
+                typeArguments += qualifierPart.typeArguments.map { it.copy() }
+            }
+        }
+        annotations += original.annotations
+    }
+}
+
+private fun FirTypeProjection.copy(): FirTypeProjection = when (this) {
+    is FirStarProjection -> FirStarProjectionImpl(source)
+    is FirTypeProjectionWithVariance -> FirTypeProjectionWithVarianceImpl(source, typeRef, variance)
+    is FirTypePlaceholderProjection -> FirTypePlaceholderProjection
+    else -> throw IllegalStateException()
 }
 
 private val GET_VALUE = Name.identifier("getValue")

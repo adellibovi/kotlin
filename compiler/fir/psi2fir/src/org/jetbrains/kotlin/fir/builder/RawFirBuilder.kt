@@ -386,7 +386,7 @@ class RawFirBuilder(session: FirSession, val stubMode: Boolean) : BaseFirBuilder
             val constructorSource = (this ?: owner).toFirSourceElement()
             val firDelegatedCall = FirDelegatedConstructorCallImpl(
                 constructorCallee ?: constructorSource,
-                delegatedSuperTypeRef,
+                delegatedSuperTypeRef.copyUserType(),
                 isThis = false
             ).apply {
                 if (!stubMode) {
