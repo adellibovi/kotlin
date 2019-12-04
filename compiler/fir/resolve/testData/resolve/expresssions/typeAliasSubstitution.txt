@@ -1,0 +1,35 @@
+FILE: typeAliasSubstitution.kt
+    public final class B : R|kotlin/Any| {
+        public constructor(): R|B| {
+            super<R|kotlin/Any|>()
+        }
+
+        public final class Builder : R|kotlin/Any| {
+            public constructor(): R|B.Builder| {
+                super<R|kotlin/Any|>()
+            }
+
+        }
+
+    }
+    public final typealias ApplyRestrictions = R|B.Builder.() -> B.Builder|
+    public final fun applyRestrictions1(): R|ApplyRestrictions| {
+        ^applyRestrictions1 fun <anonymous>(): R|class error: Unresolved this@null| {
+            this#
+        }
+
+    }
+    public final fun applyRestrictions2(): R|ApplyRestrictions| {
+        ^applyRestrictions2 R|/applyRestrictions1|()
+    }
+    public final fun <K> applyRestrictions3(e: R|K|): R|ApplyRestrictions| {
+        ^applyRestrictions3 R|/applyRestrictions1|()
+    }
+    public final fun buildB(): R|kotlin/Unit| {
+        lval a1: R|ApplyRestrictions| = R|/applyRestrictions1|()
+        lval a2: R|ApplyRestrictions| = R|/applyRestrictions2|()
+        lval a3: R|ApplyRestrictions| = R|/applyRestrictions3|<R|kotlin/String|>(String(foo))
+        Q|B|.R|/B.Builder.Builder|().<Unresolved name: a1>#()
+        Q|B|.R|/B.Builder.Builder|().<Unresolved name: a2>#()
+        Q|B|.R|/B.Builder.Builder|().<Unresolved name: a3>#()
+    }

@@ -594,6 +594,11 @@ public class FirDiagnosticsTestGenerated extends AbstractFirDiagnosticsTest {
             runTest("compiler/fir/resolve/testData/resolve/expresssions/typeAliasConstructor.kt");
         }
 
+        @TestMetadata("typeAliasSubstitution.kt")
+        public void testTypeAliasSubstitution() throws Exception {
+            runTest("compiler/fir/resolve/testData/resolve/expresssions/typeAliasSubstitution.kt");
+        }
+
         @TestMetadata("vararg.kt")
         public void testVararg() throws Exception {
             runTest("compiler/fir/resolve/testData/resolve/expresssions/vararg.kt");
