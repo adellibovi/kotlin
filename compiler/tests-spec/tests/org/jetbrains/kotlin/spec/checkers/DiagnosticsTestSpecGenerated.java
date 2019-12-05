@@ -131,9 +131,9 @@ public class DiagnosticsTestSpecGenerated extends AbstractDiagnosticsTestSpec {
                                     KotlinTestUtils.runTest(this::doTest, this, testDataFilePath);
                                 }
 
-                                @TestMetadata("1.1.kt")
-                                public void test1_1() throws Exception {
-                                    runTest("compiler/tests-spec/testData/diagnostics/linked/declarations/classifier-declaration/class-declaration/abstract-classes/p-1/pos/1.1.kt");
+                                @TestMetadata("2.1.kt")
+                                public void test2_1() throws Exception {
+                                    runTest("compiler/tests-spec/testData/diagnostics/linked/declarations/classifier-declaration/class-declaration/abstract-classes/p-1/pos/2.1.kt");
                                 }
 
                                 public void testAllFilesPresentInPos() throws Exception {
