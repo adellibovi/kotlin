@@ -391,7 +391,7 @@ class DeclarationsConverter(
                 modifiers.isEnum() && (classKind == ClassKind.ENUM_CLASS) ->
                     FirResolvedTypeRefImpl(
                         source = null,
-                        type = ConeClassLikeTypeImpl(
+                        ConeClassLikeTypeImpl(
                             implicitEnumType.type.lookupTag,
                             arrayOf(selfType.coneTypeUnsafe()),
                             isNullable = false
