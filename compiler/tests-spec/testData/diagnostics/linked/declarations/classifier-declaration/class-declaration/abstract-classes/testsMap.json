@@ -106,6 +106,12 @@
         },
         {
           "specVersion": "0.1-213",
+          "casesNumber": 0,
+          "description": "Abstract classes may contain one or more abstract members, which should be implemented in a subtype of this abstract class",
+          "unexpectedBehaviour": false
+        },
+        {
+          "specVersion": "0.1-213",
           "casesNumber": 2,
           "description": "Abstract classes may contain one or more abstract members, which should be implemented in a subtype of this abstract class",
           "unexpectedBehaviour": false
